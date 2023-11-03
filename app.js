@@ -18,5 +18,5 @@ app.use('/uploads',express.static('uploads'))
 
 
 app.listen(port , () =>{
-    console.log('server is ruunning 4000 code')
+    // console.log('server is ruunning 4000 code')
 })
