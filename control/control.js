@@ -18,6 +18,7 @@ const productmoddele = require("../Moddele/Products");
 const getdata =async (req,res)=>{
     const alldata = await productmoddele.find();
     res.send(alldata);
+//    res.send("all data is here")
 }
 
 
@@ -51,18 +52,20 @@ const putdata = async (req,res) =>{
       const discount = req.body.ds;
       const  description = req.body.dscr;
      const img1 = req.file.path;
-    // console.log(req.file.path);
+    console.log( "here is file path ",req.file.path);
 
-    // console.log(product_name);
-    // console.log(Name);
-    // console.log(quantity);
-    // console.log(prise);
-    // console.log(img1);
-    // console.log(discount);
-    // console.log(description);
+    console.log(product_name);
+    console.log(Name);
+    console.log(quantity);
+    console.log(prise);
+    console.log(img1);
+    console.log(discount);
+    console.log(description);
+    //|| !img1
 
     if(
-        !product_name || !Name || !quantity || !prise || !img1
+        !product_name || !Name || !quantity || !prise ||!img1
+ 
     )
     {
         res.status(404);
