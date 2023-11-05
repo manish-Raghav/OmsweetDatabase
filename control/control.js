@@ -52,7 +52,7 @@ const putdata = async (req,res) =>{
       const discount = req.body.ds;
       const  description = req.body.dscr;
      const img1 = req.file.path;
-    console.log( "here is file path ",req.file.path);
+    // console.log( "here is file path ",req.file.path);
 
     console.log(product_name);
     console.log(Name);
