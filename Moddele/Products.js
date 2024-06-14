@@ -20,7 +20,7 @@ const schema = mongoose.Schema({
         type:String,
         required:true   
     },
-    prise:{
+    price:{
         type:Number,
         required:true
     },
@@ -29,11 +29,11 @@ const schema = mongoose.Schema({
        required:true
 
     },
-    img2:{
-        data:Buffer,
-        contentType:String
+    // img2:{
+    //     data:Buffer,
+    //     contentType:String
 
-    }
+    // }
 
 
 })

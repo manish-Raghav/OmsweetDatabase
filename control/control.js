@@ -1,76 +1,74 @@
 const productmoddele = require("../Moddele/Products");
+const Login =require("../Moddele/Login")
 
 
 
-// const Storege = multer.diskStorage({
-//     destination:'uploads',
-//     filename:(req, file ,cb) =>{
-//         cb(null,file.originalname)
-//     },
-// });
-// const upload =multer({
-//     storage:Storege
-// }).single('testImage')
+
+
+
+const signup = async(req ,res) =>{
+    const name = req.body.name;
+    const Lname = req.body.lstname;
+    const email = req.body.email;
+    const pass = req.body.pass;
+
+    if(!name || !Lname || !email || !pass)
+    {
+      
+    }
+
+
+}
+
+const login = async(req ,res) =>{
+
+}
 
 
 
 
 const getdata =async (req,res)=>{
     const alldata = await productmoddele.find();
-    res.send(alldata);
+    res.status(200).json(alldata);
 //    res.send("all data is here")
 }
 
 
 const getchocolate = async (req ,res) =>{
     const alldata = await productmoddele.find({product_name:"chocolates"});
-    res.send(alldata);
+    res.status(200).json(alldata);
 }
 const getsweet = async (req ,res) =>{
     const alldata = await productmoddele.find({product_name:"sweet"});
-    res.send(alldata);
+    res.status(200).json(alldata);
 }
 const getfood = async (req ,res) =>{
     const alldata = await productmoddele.find({product_name:"food"});
-    res.send(alldata);
+    res.status(200).json(alldata);
 }
 const getbak = async (req ,res) =>{
     const alldata = await productmoddele.find({product_name:"Bakries"});
-    res.send(alldata);
+    res.status(200).json(alldata);
 }
 
 
 
 const putdata = async (req,res) =>{
-  // console.log(req.file,req.body);
+    //   console.log(req.file,req.body);
   console.log('all data started from heree');
     
       const  product_name = req.body.pro; 
       const Name = req.body.nm;
       const quantity = req.body.qnt;
-      const prise = req.body.ps;
+      const price = req.body.ps;
       const discount = req.body.ds;
       const  description = req.body.dscr;
-     const img1 = req.file.path;
-    // console.log( "here is file path ",req.file.path);
+       const imgdata = req.file.path;
+       const img1 = imgdata.substr(7);
 
-    console.log(product_name);
-    console.log(Name);
-    console.log(quantity);
-    console.log(prise);
-    console.log(img1);
-    console.log(discount);
-    console.log(description);
-    //|| !img1
 
-    if(
-        !product_name || !Name || !quantity || !prise ||!img1
- 
-    )
-    {
-        res.status(404);
-        throw new Error("please input all the field");
-    }
+
+    
 
     
        
@@ -79,7 +77,7 @@ const putdata = async (req,res) =>{
          product_name,
           Name,
           quantity,
-          prise,
+          price,
           discount,
           description,
           img1,
@@ -87,6 +85,6 @@ const putdata = async (req,res) =>{
       });
     
       await newUser.save();
-      res.json(newUser);
+       return res.status(200).json(newUser);
 }
-module.exports ={getdata , putdata,getchocolate ,getsweet ,getfood ,getbak};
+module.exports ={getdata , putdata,getchocolate ,getsweet ,getfood ,getbak,signup ,login};
